@@ -11,10 +11,10 @@ export const SinglePerson = props => {
 	useEffect(() => {
 		actions.getPerson(params.uid)
 			.then(detailPerson => setDetail(detailPerson));
-	}, [actions, params.uid]);
+	}, [params.uid]);
 	console.log(detail)
 	return (
-		params.uid && detail && <div className="container">
+		detail && <div className="container">
 			<div className="row">
 				<div className="col-6">
 					<img className="img-fluid" src="https://dummyimage.com/600x400/adadad/ffffff.jpg" />
@@ -25,7 +25,15 @@ export const SinglePerson = props => {
 				</div>
 			</div>
 			<hr className="border border-danger" />
-			
+			<div className="d-flex justify-content-between align-items-center">
+					<p><b>Birth year:</b>{detail.properties.birth_year}</p>
+					<p><b>Eye Color:</b>{detail.eye_color}</p>
+					<p><b>Gender:</b>{detail.gender}</p>
+					<p><b>Hair Color:</b>{detail.hair_color}</p>
+					<p><b>weight:</b>{detail.mass}</p>
+					<p><b>Skin Color:</b>{detail.skin_color}</p>
+
+				</div>
 			<div className="row"></div>
 		</div> || <div className="spinner-border text-success mx-auto" role="status">
 			<span className="visually-hidden">Loading...</span>

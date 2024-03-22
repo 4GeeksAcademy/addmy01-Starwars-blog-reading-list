@@ -14,7 +14,7 @@ export const CharacterCard = ({ person }) => {
     useEffect(() => {
         actions.getPerson(person.uid)
             .then(detailPerson => setDetail(detailPerson));
-    }, [actions, person.uid]);
+    }, [person.uid]);
 
     return (
         <React.Fragment>
@@ -27,15 +27,14 @@ export const CharacterCard = ({ person }) => {
                         <p className="card-text">Eye Color: {detail.properties.eye_color}</p>
                         <p className="card-text">Hair Color: {detail.properties.hair_color}</p>
                     </div>
-                    <div className="card-footer">
+                    <div className="card-footer d-flex justify-content-between align-items-center">
                         <Link to={"/people/" + person.uid} className="btn btn-primary">More Info</Link>
-                        <button
-                            className={isClicked ? "fa-brands fa-jedi-order clicked" : "fa-brands fa-jedi-order glow"}
-                            onClick={favoriteButton}
+                        <span
+                            className={isClicked ? "fa-regular fa-heart glow" : "fa-regular fa-heart clicked"}
+                            onClick={favoriteButton} 
                         />
                     </div>
                 </div>
-                // </div>
             )
                 : null}
         </React.Fragment>
